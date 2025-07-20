@@ -1,6 +1,8 @@
 import React, {useState} from 'react'
+import { Link } from 'react-router-dom'
+import Ratting from '../components/Ratting'
 
-const title = "Our Products";
+const title = "Sản phẩm của chúng tôi";
 
 const ProductData = [
   {
@@ -81,8 +83,12 @@ const CategoryShowCase = () => {
   const [items, setItems] = useState(ProductData);
 
   // category baded filtering
-  const filterItem = () => {
+  const filterItem = (categItem) => {
+    const updateItems = ProductData.filter((curItem) => {
+      return curItem.cate === categItem;
+    });
 
+    setItems(updateItems);
   }
 
   return (
@@ -102,18 +108,19 @@ const CategoryShowCase = () => {
                 <h2 className='title'>{title}</h2>
                 <div className='course-filter-group'>
                     <ul className='lab-ul'>
-                        <li onClick={() => filterItem("All")}>All</li>
-                        <li onClick={() => filterItem("Shoes")}>Shoes</li>
-                        <li onClick={() => filterItem("Bags")}>Bags</li>
-                        <li onClick={() => filterItem("Phones")}>Phones</li>
-                        <li onClick={() => filterItem("Beauty")}>Beauty</li>
+                        <li onClick={() => setItems(ProductData)}>All</li>
+                        <li onClick={() => filterItem("Shoes")}>Giày</li>
+                        <li onClick={() => filterItem("Bags")}>Balo</li>
+                        <li onClick={() => filterItem("Phones")}>Điện thoại</li>
+                        <li onClick={() => filterItem("Beauty")}>Sắc đẹp</li>
                     </ul>
                 </div>
+
             </div>
 
             {/* section body */}
             <div className='section-wrapper'>
-                <div>
+                <div className='row g-4 justify-content-center row-cols-xl-4 row-cols-lg-3 row-cols-md-2 row-cols-1 course-filter'>
                     {
                         items.map((product) => <div key={product.id} className='col'>
                             <div className='course-item style-4'>
@@ -124,8 +131,21 @@ const CategoryShowCase = () => {
                                             <a href="#">{product.cate}</a>
                                         </div>
                                         <div className='course-review'>
-
+                                            <Ratting />
                                         </div>
+                                    </div>
+
+                                    {/* content */}
+                                    <div className='course-content'>
+                                      <Link to={`/shop/${product.id}`}><h6>{product.title}</h6></Link>
+                                      <div className='course-footer'>
+                                        <div className='course-author'>
+                                        <Link to="/" className='ca-name'>{product.brand}</Link>
+                                        </div>
+                                        <div className='course-price'>
+                                          {product.price}
+                                        </div>
+                                      </div>
                                     </div>
                                 </div>
                             </div>
