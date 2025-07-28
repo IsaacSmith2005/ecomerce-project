@@ -1,6 +1,5 @@
 import React, { useState } from 'react'
 import PageHeader from '../components/PageHeader'
-import { Link } from "react-router-dom";
 
 const showResults = "Showing 01 - 12 of 139 Results"
 import Data from '../products.json'
@@ -8,6 +7,8 @@ import ProductCards from './ProductCards'
 import Pagination from "./Pagination";
 import Search from './Search';
 import ShopCategory from './ShopCategory';
+import PopularPost from './PopularPost';
+import Tags from './Tags'
 
 const Shop = () => {
   const [GridList, setGridList] = useState(true);
@@ -88,6 +89,8 @@ const Shop = () => {
                   setProducts={setProducts}
                   selectedCategory={selectedCategory}
                 />
+                <PopularPost />
+                <Tags />
               </aside>
             </div>
           </div>
