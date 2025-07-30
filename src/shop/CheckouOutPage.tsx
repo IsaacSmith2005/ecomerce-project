@@ -1,5 +1,7 @@
 import React, { useState } from 'react'
 import { Button, Modal } from 'react-bootstrap';
+import '../components/modal.css'
+import { useLocation, useNavigate } from 'react-router-dom';
 
 const CheckouOutPage = () => {
 
@@ -13,6 +15,17 @@ const CheckouOutPage = () => {
 
     const handleShow = () => setShow(true)
     const handleClose = () => setShow(false)
+
+    // direct to home page
+    const location = useLocation();
+    const navigate = useNavigate();
+    const from = location.state?.from?.pathname || "/";
+
+    const handleOrderConfirm = () => {
+        alert("Bạn đã thanh toán thành công!")
+        localStorage.removeItem("cart");
+        navigate(from, {replace: true})
+    }
 
   return (
     <div className='modalCard'>
@@ -80,12 +93,71 @@ const CheckouOutPage = () => {
                                                 <span>Số thẻ</span>
                                                 <i className='fa fa-eye'></i>
                                             </div>
+                                            <div className='d-flex flex-row'>
+                                                <div className="inputbox">
+                                                    <input type="text" name='number' id='number' min='1' max='999' className='form-control' required/>
+                                                    <span>Ngày hết hạn</span>
+                                                    <i className='fa fa-eye'></i>
+                                                </div>
+                                                <div className="inputbox">
+                                                    <input type="text" name='number' id='number' min='1' max='999' className='form-control' required/>
+                                                    <span>CVV</span>
+                                                    <i className='fa fa-eye'></i>
+                                                </div>
+                                            </div>
+                                            <div className='px-5 pay'>
+                                                <button className='btn btn-success btn-block' onClick={handleOrderConfirm}>Thanh toán ngay</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                {/* paypal content */}
+                                <div className={`tab-pane fade ${activeTab === "paypal" ? "show active" : ""}`}
+                                id='paypal'
+                                role='tabpanel'
+                                aria-labelledby='paypal-tab'
+                                >
+                                    {/* paypal tab content */}
+                                    <div className='mt-4 mx-4'>
+                                        <div className='text-center'>
+                                            <h5>Thẻ tín dụng</h5>
+                                        </div>
+                                        <div className='form mt-3'>
+                                            <div className="inputbox">
+                                                <input type="text" name='name' id='name' className='form-control' required/>
+                                                <span>Email</span>
+                                            </div>
+                                            <div className="inputbox">
+                                                <input type="text" name='number' id='number' min='1' max='999' className='form-control' required/>
+                                                <span>Tên Của bạn</span>
+                                                <i className='fa fa-eye'></i>
+                                            </div>
+                                            <div className='d-flex flex-row'>
+                                                <div className="inputbox">
+                                                    <input type="text" name='number' id='number' min='1' max='999' className='form-control' required/>
+                                                    <span>Ngày hết hạn</span>
+                                                    <i className='fa fa-eye'></i>
+                                                </div>
+                                                <div className="inputbox">
+                                                    <input type="text" name='number' id='number' min='1' max='999' className='form-control' required/>
+                                                    <i className='fa fa-eye'></i>
+                                                </div>
+                                            </div>
+                                            <div className='px-5 pay'>
+                                                <button className='btn btn-success btn-block' onClick={handleOrderConfirm}>Thanh toán</button>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
 
-                            {/* paypal content */}
+                            {/* payment desclaimer */}
+                            <p className='mt-3 px-4 p-Disclaimer'>
+                                <em>Tuyên bố miễn trừ thanh toán: </em> 
+                                Trong mọi trường hợp, Chủ sở hữu sẽ không thanh toán hoặc 
+                                thanh toán một phần cho bất kỳ vật liệu hoặc dịch vụ nào.
+                            </p>
                         </div>
                     </div>
                 </div>

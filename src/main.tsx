@@ -20,6 +20,7 @@ import Blog from './blog/Blog.tsx'
 import Shop from './shop/Shop.tsx';
 import SingleProduct from './shop/SingleProduct.tsx';
 import CartPage from './shop/CartPage.tsx';
+import SingleBlog from './blog/SingleBlog.tsx';
 
 const router = createBrowserRouter([
   {
@@ -28,6 +29,7 @@ const router = createBrowserRouter([
     children: [
       { path: '/', element: <Home /> },
       { path: '/blog', element: <Blog /> },
+      { path: '/blog/:id', element: <SingleBlog /> },
       { path: '/shop', element: <Shop /> },
       { path: '/shop/:id', element: <SingleProduct /> },
       { path: "/cart-page", element: <CartPage />}
