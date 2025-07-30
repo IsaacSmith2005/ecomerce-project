@@ -25,6 +25,7 @@ import About from './about/About.tsx';
 import AuthProvider from './contexts/AuthProvider.tsx';
 import PrivateRoute from './PrivateRoute/PrivateRoute.tsx';
 import Login from './components/Login.tsx';
+import Signup from './components/Signup.tsx';
 
 const router = createBrowserRouter([
   {
@@ -42,6 +43,9 @@ const router = createBrowserRouter([
   },
   {
     path: "login", element: <Login />
+  },
+  {
+    path: "sign-up", element: <Signup />
   }
 ])
 

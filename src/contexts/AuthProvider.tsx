@@ -3,11 +3,24 @@ import { createContext } from 'react'
 import app from '../firebase/firebase.config'
 import { GoogleAuthProvider, createUserWithEmailAndPassword, getAuth, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup, signOut } from 'firebase/auth';
 
-export const AuthContext = createContext();
-const auth = getAuth(); 
+interface AuthContextType {
+    user: any;
+    loading: boolean;
+    createUser: (email: string, password: string) => Promise<any>;
+    signUpWithGmail: () => Promise<any>;
+    login: (email: string, password: string) => Promise<any>;
+    logout: () => Promise<void>;
+}
+
+export const AuthContext = createContext<AuthContextType | undefined>(undefined);
+const auth = getAuth(app); 
 const googleProvider = new GoogleAuthProvider();
 
-const AuthProvider = ({children}) => {
+interface AuthProviderProps {
+    children: React.ReactNode;
+}
+
+const AuthProvider: React.FC<AuthProviderProps> = ({children}) => {
     const [user, setUser] = useState(null);
     const [loading, setLoading] = useState(true);
 
