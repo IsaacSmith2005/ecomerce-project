@@ -1,11 +1,15 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Link } from "react-router-dom"; // Đã thêm import Link
+import { AuthContext } from "../contexts/AuthProvider";
 
 const NavItems = () => {
   const [menuToggle, setMenuToggle] = React.useState(false);
   const [socialToggle, setSocialToggle] = React.useState(false);
   const [headerFixed, setHeaderFixed] = React.useState(false);
 
+  // authinfo
+  const {user} = useContext(AuthContext)
+  console.log(user)
   window.addEventListener("scroll", () => {
     if (window.scrollY > 100) {
       setHeaderFixed(true);
@@ -55,9 +59,6 @@ const NavItems = () => {
                   </li>
                   <li>
                     <Link to="/blog">Blog</Link>
-                  </li>
-                  <li>
-                    <Link to="/contact">Contact</Link>
                   </li>
                 </ul>
               </div>
