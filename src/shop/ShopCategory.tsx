@@ -9,11 +9,11 @@ const ShopCategory = ({ filterItem, setItem, menuItems, setProducts, selectedCat
 
         </div>
         <div>
-            <button onClick={() => setProducts(Data)} className={`m-2 ${selectedCategory === 'All' ? 'bg-warning' : ""}`}>All</button>
+            <button onClick={() => setProducts(Data)} className={`m-2 ${selectedCategory === 'All' ? 'bg-info' : ""}`}>All</button>
             {
                 menuItems.map((Val, id) => {
                     return (
-                        <button className={`m-2 ${selectedCategory === Val ? 'bg-warning' : ""}`} 
+                        <button className={`m-2 ${selectedCategory === Val ? 'bg-info' : ""}`} 
                         key={id}
                         onClick={() => filterItem(Val)}>
                             {Val}

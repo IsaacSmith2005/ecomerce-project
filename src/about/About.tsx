@@ -1,12 +1,12 @@
 import React from 'react'
 import PageHeader from '../components/PageHeader';
 
-const subTitle = "About Our Brand"; 
-const title = "Good Qualification Services And Better Expriences"; 
-const desc = "Distinctively provide acces mutfuncto users whereas transparent proceses somes ncentivize eficient functionalities rather than extensible archtectur communicate leveraged services and cross-platform.";
+const subTitle = "Thông tin về tôi"; 
+const title = "Nguyễn Thanh Phước - Sinh viên năm 2 tại Đại học Đông Á"; 
+const desc = "Xin chào, tôi là Nguyễn Thanh Phước, một sinh viên năm 2 tại Đại học Đông Á. Tôi đam mê công nghệ và thiết kế web, và đang theo đuổi sự nghiệp trong lĩnh vực này. Tôi hy vọng có thể đóng góp vào các dự án thú vị và học hỏi từ những người có kinh nghiệm trong ngành.";
 
-const year = "30+"; 
-const expareance = "Years Of Experiences";
+const year = "18+"; 
+const expareance = " Second year student at Dong A University";
 
 const About = () => {
   return (
@@ -19,9 +19,6 @@ const About = () => {
                         <div className='about-left'>
                             <div className='about-thumb'>
                                 <img src="/src/assets/images/about/01.jpg" alt="" />
-                            </div>
-                            <div className='abs-thumb'>
-                                <img src="/src/assets/images/about/02.jpg" alt="" />
                             </div>
                             <div className='about-left-content'>
                                 <h3>{year}</h3>
